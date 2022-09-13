@@ -27,6 +27,7 @@ $events | select-object SrcIP, SrcPort, DstIP, DstPort, AppName |  Export-Csv -P
 
 $file = Import-CSV c:\support\5152log.csv
 
+set-Content -Path c:\support\geoinfop.txt -Value ""
 
 foreach ($row in $file) {
     if ($row.SrcIP -ne "") {
@@ -49,6 +50,6 @@ $info=$ip+"  DNS:"+$dnsRecord+ "  SrcPort:"+$SrcPort+"  DstIP:"+$DstIP+"  DstPor
 write-host $info
 
 
-Set-Content -Path c:\support\geoinfop.txt -Value $info
+add-Content -Path c:\support\geoinfop.txt -Value $info
     }
 }
